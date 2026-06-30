@@ -1,0 +1,55 @@
+body {
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+  line-height: 1.5;
+}
+
+.light-theme {
+  background-image: url(https://i.pinimg.com/736x/28/93/a1/2893a1948070ac50b5f95d3cc6fc0a89.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgb(0, 0, 0);
+}
+
+.dark-theme {
+  background-image: url(https://i.pinimg.com/1200x/b9/dd/4b/b9dd4b7bab340dec7a23d7d7cebe3a9d.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+}
+
+.input-grup,
+.satuan-grup {
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 5px;
+  width: 50%;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.box-cuaca {
+  border: 2px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.error-msg {
+  color: red;
+  font-weight: bold;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 5px;
+}
