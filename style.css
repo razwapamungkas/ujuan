@@ -3,6 +3,7 @@ body {
   max-width: 500px;
   margin: auto;
   line-height: 1.5;
+  font-family: Arial, sans-serif;
 }
 
 .light-theme {
@@ -39,6 +40,24 @@ button {
   padding: 15px;
   border-radius: 5px;
   margin-top: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* KOTAK GRAFIK */
+.grafik-container {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+/* SETELAN UKURAN KOTAK PETA */
+#map {
+  height: 250px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  z-index: 1;
 }
 
 .error-msg {
