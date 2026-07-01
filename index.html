@@ -3,72 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Info Cuaca</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
-    <body class="light-theme" id="bodiAplikasi">
-      <h2>Info Cuaca</h2>
+  <body class="light-theme" id="bodiAplikasi">
+    <h2>Info Cuaca & Peta</h2>
 
-      <button onclick="gantiTema()">Tema</button>
-      <hr />
+    <button onclick="gantiTema()">Tema</button>
+    <hr />
 
-      <div class="input-grup">
-        <input type="text" id="inputKota" placeholder="Ketik nama kota..." />
-        <button onclick="cariCuaca()">Cari</button>
-        <button onclick="ambilLokasiSaya()">Gunakan Lokasi Saya</button>
+    <div class="input-grup">
+      <input type="text" id="inputKota" placeholder="Ketik nama kota..." />
+      <button onclick="cariCuaca()">Cari</button>
+      <button onclick="ambilLokasiSaya()">Gunakan Lokasi Saya</button>
+    </div>
+
+    <div class="satuan-grup">
+      Satuan:
+      <button onclick="ubahSatuan('C')">°C</button>
+      <button onclick="ubahSatuan('F')">°F</button>
+    </div>
+
+    <div id="loadingState" style="display: none; font-weight: bold">
+      Sedang mengambil data...
+    </div>
+    <div id="pesanError" class="error-msg"></div>
+
+    <div id="tampilanCuaca" class="box-cuaca" style="display: none">
+      <div style="display: flex; justify-content: space-between">
+        <h3 id="namaKotaNegara">Nama Kota</h3>
+        <button onclick="tambahKeFavorit()">Tambah Ke Favorit</button>
       </div>
 
-      <div class="satuan-grup">
-        Satuan:
-        <button onclick="ubahSatuan('C')">°C</button>
-        <button onclick="ubahSatuan('F')">°F</button>
-      </div>
-
-      <div
-        id="loadingState"
-        style="display: none; font-weight: bold"
-      >
-        Sedang mengambil data...
-      </div>
-      <div id="pesanError" class="error-msg"></div>
-
-      <div id="tampilanCuaca" class="box-cuaca" style="display: none">
-        <div style="display: flex; justify-content: space-between">
-          <h3 id="namaKotaNegara">Nama Kota</h3>
-          <button
-            onclick="tambahKeFavorit()"
-          >
-            Tambah Ke Favorit
-          </button>
-        </div>
-
-        <div id="weatherIcon" style="font-size: 40px">☀️</div>
-        <h1 id="angkaSuhu">0°C</h1>
-        <p id="kondisiCuaca">Kondisi</p>
-
-        <hr />
-
-        <p><b>Terasa Seperti:</b> <span id="feelsLike">0</span></p>
-        <p><b>Kelembapan:</b> <span id="humidity">0</span>%</p>
-        <p><b>Kecepatan Angin:</b> <span id="windSpeed">0</span> m/s</p>
-        <p><b>Tekanan Udara:</b> <span id="pressure">0</span> hPa</p>
-        <p><b>Jarak Pandang:</b> <span id="visibility">0</span> m</p>
-
-        <hr />
-
-        <h4>Informasi Tambahan:</h4>
-        <p><b>Suhu Min:</b> <span id="minTemp">0</span></p>
-        <p><b>Suhu Max:</b> <span id="maxTemp">0</span></p>
-        <p><b>Matahari Terbit:</b> <span id="sunrise">00:00</span></p>
-        <p><b>Matahari Terbenam:</b> <span id="sunset">00:00</span></p>
-      </div>
+      <h1 id="angkaSuhu">0°C</h1>
+      <p id="kondisiCuaca">Kondisi</p>
 
       <hr />
 
-      <h3>Kota Favorit:</h3>
-      <ul id="daftarFavorit"></ul>
+      <p><b>Terasa Seperti:</b> <span id="feelsLike">0</span></p>
+      <p><b>Kelembapan:</b> <span id="humidity">0</span>%</p>
+      <p><b>Kecepatan Angin:</b> <span id="windSpeed">0</span> m/s</p>
+      <p><b>Tekanan Udara:</b> <span id="pressure">0</span> hPa</p>
+      <p><b>Jarak Pandang:</b> <span id="visibility">0</span> m</p>
 
-      <script src="script.js"></script>
-    </body>
-  </html>
+      <hr />
+
+      <h4>Informasi Tambahan:</h4>
+      <p><b>Suhu Min:</b> <span id="minTemp">0</span></p>
+      <p><b>Suhu Max:</b> <span id="maxTemp">0</span></p>
+      <p><b>Matahari Terbit:</b> <span id="sunrise">00:00</span></p>
+      <p><b>Matahari Terbenam:</b> <span id="sunset">00:00</span></p>
+
+      <hr />
+
+      <h4>Grafik Perkiraan Suhu (24 Jam ke Depan):</h4>
+      <div class="grafik-container">
+        <canvas id="grafikCuaca"></canvas>
+      </div>
+    </div>
+
+    <div id="map"></div>
+
+    <hr />
+
+    <h3>Kota Favorit:</h3>
+    <ul id="daftarFavorit"></ul>
+
+    <script src="script.js"></script>
+  </body>
 </html>
